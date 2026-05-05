@@ -1,0 +1,29 @@
+Legend: path:{lines}  (lines = total number of lines via wc -l)
+.
+└── .
+    ├── AGENTS.md:238
+    ├── CHANGELOG.md:14
+    ├── CODE_OF_CONDUCT.md:13
+    ├── CONTRIBUTING.md:90
+    ├── LICENSE:21
+    ├── README.md:110
+    ├── RELEASE.md:28
+    ├── SECURITY.md:15
+    ├── docs
+    │   └── datajud-resolver.md:100
+    ├── gitree.txt:29
+    ├── pyproject.toml:86
+    ├── src
+    │   └── pydatajud
+    │       ├── __init__.py:32
+    │       ├── cli.py:58
+    │       ├── client.py:157
+    │       ├── exceptions.py:26
+    │       ├── py.typed:1
+    │       └── resolver.py:144
+    └── tests
+        ├── test_cli.py:56
+        ├── test_client.py:108
+        └── test_resolver.py:76
+
+6 directories, 20 files

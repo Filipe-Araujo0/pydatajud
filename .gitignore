@@ -8,4 +8,5 @@ build/
 dist/
 *.egg-info/
 *.py[cod]
+processo_*_full.json
 uv.lock

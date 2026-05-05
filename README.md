@@ -30,6 +30,26 @@ print(result.endpoint)
 print(result.movimentos)
 ```
 
+## API key pública do DataJud
+
+A API pública do DataJud usa uma chave pública no cabeçalho
+`Authorization: APIKey ...`.
+
+Até o momento, o CNJ publica uma chave pública única e vigente na página oficial
+de acesso da wiki do DataJud. Para usar a biblioteca, copie a chave atual de:
+
+https://datajud-wiki.cnj.jus.br/api-publica/acesso/
+
+Depois defina:
+
+```bash
+export DATAJUD_API_KEY="cole-a-chave-publica-vigente-aqui"
+```
+
+O próprio CNJ informa que essa chave pode ser alterada a qualquer momento. Por
+isso, a documentação do `pydatajud` aponta para a página oficial em vez de tratar
+uma chave copiada em README como permanente.
+
 ## CLI
 
 ```bash
@@ -57,6 +77,9 @@ pydatajud --processo "0000832-35.2018.4.01.3202" --movimentos-only
 - Retorna os `hits` brutos e a lista agregada de `movimentos`.
 - Expõe erros próprios para autenticação, resposta inválida, processo não
   encontrado e tribunal sem endpoint mapeado.
+
+Para entender a lógica de resolução de endpoints a partir da estrutura do número
+CNJ, leia [docs/datajud-resolver.md](./docs/datajud-resolver.md).
 
 ## Limitações
 
