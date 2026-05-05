@@ -1,0 +1,86 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pydatajud"
+version = "0.1.0"
+description = "Cliente Python para API pública do DataJud"
+readme = "README.md"
+license = "Unlicense"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Filipe Araujo", email = "filipeee0@gmail.com" },
+]
+requires-python = ">=3.10"
+keywords = ["datajud", "cnj", "judiciario", "processos", "brasil"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Legal Industry",
+  "Natural Language :: Portuguese (Brazilian)",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Internet :: WWW/HTTP",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Typing :: Typed",
+]
+dependencies = [
+  "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2.0",
+  "pytest>=8.0.0",
+  "requests-mock>=1.12.0",
+  "twine>=5.0.0",
+  "types-requests>=2.31.0",
+  "mypy>=1.10.0",
+  "ruff>=0.5.0",
+]
+
+test = [
+  "pytest>=8.0.0",
+  "requests-mock>=1.12.0",
+]
+
+lint = [
+  "ruff>=0.5.0",
+  "mypy>=1.10.0",
+  "types-requests>=2.31.0",
+]
+
+[project.scripts]
+pydatajud = "pydatajud.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Filipe-Araujo0/pydatajud"
+Repository = "https://github.com/Filipe-Araujo0/pydatajud"
+Issues = "https://github.com/Filipe-Araujo0/pydatajud/issues"
+Documentation = "https://github.com/Filipe-Araujo0/pydatajud#readme"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4", "SIM"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
