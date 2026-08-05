@@ -1,4 +1,16 @@
-from pydatajud.client import DataJudClient, DataJudResult
+from pydatajud.client import (
+    DataJudBatchResponse,
+    DataJudClient,
+    DataJudRawBatchResponse,
+    DataJudResponse,
+    DataJudResult,
+    MovementDeltaBatchResult,
+)
+from pydatajud.client_modules import (
+    MovementDeltaMode,
+    MovementDeltaResult,
+    extract_movements_delta,
+)
 from pydatajud.exceptions import (
     DataJudAuthenticationError,
     DataJudError,
@@ -16,13 +28,20 @@ from pydatajud.resolver import (
 )
 
 __all__ = [
+    "DataJudBatchResponse",
     "DataJudAuthenticationError",
     "DataJudClient",
     "DataJudError",
     "DataJudInvalidResponseError",
     "DataJudProcessNotFoundError",
     "DataJudRequestError",
+    "DataJudRawBatchResponse",
+    "DataJudResponse",
     "DataJudResult",
+    "MovementDeltaBatchResult",
+    "MovementDeltaMode",
+    "MovementDeltaResult",
+    "extract_movements_delta",
     "InvalidCNJProcessNumberError",
     "UnsupportedTribunalForDataJudError",
     "format_cnj_process_number",

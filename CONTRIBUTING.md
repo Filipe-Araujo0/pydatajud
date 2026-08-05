@@ -30,9 +30,16 @@ pip install -e ".[dev]"
 ruff check .
 ruff format --check .
 mypy src tests
-pytest
+pytest -m "not e2e"
 python -m build
 twine check dist/*
+```
+
+Para rodar integração real opcional (fora da suíte determinística padrão):
+
+```bash
+export DATAJUD_API_KEY="sua-api-key"
+pytest -m e2e -ra
 ```
 
 ## Documentação obrigatória
@@ -62,7 +69,7 @@ Fluxo padrão:
 ruff format --check .
 ruff check .
 mypy src tests
-pytest
+pytest -m "not e2e"
 git add <arquivos-alterados>
 git commit -m "<tipo>: <resumo imperativo curto>"
 git push origin main
@@ -84,6 +91,7 @@ no PyPI.
 ## Diretrizes
 
 - Mantenha a suíte padrão sem chamadas reais à API do CNJ.
+- Testes E2E reais devem ficar marcados com `@pytest.mark.e2e` e executados separadamente.
 - Use mocks para testes de HTTP.
 - Documente mudanças de API no `CHANGELOG.md`.
 - Não inclua chaves de API, dados sensíveis ou números de processos sigilosos.

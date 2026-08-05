@@ -33,8 +33,11 @@ Campos relevantes para o resolvedor:
 
 Exemplo:
 
+`numero_do_processo` é um stub documental; use um número CNJ da sua própria
+configuração durante a execução.
+
 ```text
-1500885-68.2021.8.26.0271
+numero_do_processo
 ```
 
 Neste caso:
@@ -98,3 +101,17 @@ Altere o resolvedor quando:
 
 Mudanças no resolvedor devem incluir testes unitários para validação CNJ,
 mapeamento de alias e URL final.
+
+## Sobre formato de resposta (Elasticsearch)
+
+O resolvedor só decide o endpoint. A resposta da consulta vem no formato padrão
+do Elasticsearch, porque a API pública do DataJud expõe `_search` por índice.
+
+Isso significa que campos como `size`, `took`, `_shards`, `hits.total`,
+`hits.hits` e `max_score` seguem a semântica do Elasticsearch.
+
+Referências oficiais:
+
+- DataJud (considerações finais): https://datajud-wiki.cnj.jus.br/api-publica/consideracoes_finais/
+- Elasticsearch Search API: https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search
+- Elasticsearch Querying for Search: https://www.elastic.co/docs/solutions/search/querying-for-search

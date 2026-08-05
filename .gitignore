@@ -1,8 +1,10 @@
 .coverage
+.env
 .mypy_cache/
 .pytest_cache/
 .ruff_cache/
 .venv/
+dev/
 __pycache__/
 build/
 dist/
@@ -10,3 +12,5 @@ dist/
 *.py[cod]
 processo_*_full.json
 uv.lock
+.serena
+*.xsd

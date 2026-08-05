@@ -43,8 +43,8 @@ English:
   `docs/datajud-resolver.md`; do not duplicate all of that domain explanation in
   code comments.
 - Tests must not call the real CNJ API by default.
-- Real integration checks should require an explicit API key and should not run
-  in the normal test suite.
+- Real integration checks must be marked with `@pytest.mark.e2e`, require an
+  explicit API key, and not run in the normal test suite.
 - DataJud can change response details, endpoint availability, limits, and terms;
   code should fail clearly when assumptions no longer hold.
 - Public judicial data may still contain sensitive personal data. Do not commit
@@ -123,9 +123,16 @@ Before opening a PR, run:
 ruff check .
 ruff format --check .
 mypy src tests
-pytest
+pytest -m "not e2e"
 python -m build
 twine check dist/*
+```
+
+Optional real-network E2E:
+
+```bash
+export DATAJUD_API_KEY="..."
+pytest -m e2e -ra
 ```
 
 Expected test coverage for changes:
@@ -171,7 +178,7 @@ For normal changes, use this workflow:
 ruff format --check .
 ruff check .
 mypy src tests
-pytest
+pytest -m "not e2e"
 ```
 
 If the change affects packaging or release readiness, also run:
@@ -235,4 +242,5 @@ process data dumps in `gitree.txt`; keep those ignored.
 - Bypassing CNJ/API limitations.
 - Treating DataJud data as legally complete case history.
 - Running network integration tests as part of default CI.
+- Making E2E depend on fixed movement counts or unstable payload fields.
 - Adding async support before the synchronous API is mature.

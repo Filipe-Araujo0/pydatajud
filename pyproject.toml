@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pydatajud"
-version = "0.1.1"
-description = "Cliente Python para API pública do DataJud"
+version = "0.2.0"
+description = "Verificação eficiente de novas movimentações na API pública do DataJud"
 readme = "README.md"
 license = "Unlicense"
 license-files = ["LICENSE"]
@@ -13,7 +13,7 @@ authors = [
   { name = "Filipe Araujo", email = "filipeee0@gmail.com" },
 ]
 requires-python = ">=3.10"
-keywords = ["datajud", "cnj", "judiciario", "processos", "brasil"]
+keywords = ["datajud", "cnj", "judiciario", "processos", "movimentacoes", "brasil"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
@@ -84,3 +84,6 @@ strict = true
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra"
+markers = [
+  "e2e: real network tests against DataJud public API",
+]

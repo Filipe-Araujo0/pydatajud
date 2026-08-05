@@ -14,6 +14,7 @@ Configuração necessária no PyPI:
    - Environment name: `pypi`
 
 ## Processo de release
+<!-- Atualizado em: 2026-08-05T11:42:22-03:00 -->
 
 1. Atualizar `version` em `pyproject.toml`.
 2. Atualizar `CHANGELOG.md`.
@@ -21,8 +22,9 @@ Configuração necessária no PyPI:
 4. Criar e enviar tag:
 
 ```bash
-git tag v0.1.0
-git push origin main --tags
+git tag v0.2.0
+git push origin main
+git push origin v0.2.0
 ```
 
 O workflow `publish.yml` irá gerar `sdist`/`wheel` e publicar no PyPI.

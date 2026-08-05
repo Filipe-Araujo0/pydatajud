@@ -1,0 +1,37 @@
+name: E2E DataJud API
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 9 * * 1"
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    env:
+      DATAJUD_API_KEY: ${{ secrets.DATAJUD_API_KEY }}
+      DATAJUD_E2E_SINGLE_PROCESS: ${{ secrets.DATAJUD_E2E_SINGLE_PROCESS }}
+      DATAJUD_E2E_BATCH_PROCESSES: ${{ secrets.DATAJUD_E2E_BATCH_PROCESSES }}
+      DATAJUD_E2E_DELTA_PROCESSES: ${{ secrets.DATAJUD_E2E_DELTA_PROCESSES }}
+      DATAJUD_E2E_PAGINATION_PROCESSES: ${{ secrets.DATAJUD_E2E_PAGINATION_PROCESSES }}
+      DATAJUD_E2E_NOT_FOUND_PROCESS: ${{ secrets.DATAJUD_E2E_NOT_FOUND_PROCESS }}
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+      - name: Validate required E2E secrets
+        run: |
+          test -n "$DATAJUD_API_KEY"
+          test -n "$DATAJUD_E2E_DELTA_PROCESSES"
+      - name: Run E2E tests against real DataJud API
+        run: pytest -m e2e -ra

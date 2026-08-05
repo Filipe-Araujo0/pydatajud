@@ -1,29 +1,39 @@
 Legend: path:{lines}  (lines = total number of lines via wc -l)
 .
 └── .
-    ├── AGENTS.md:238
-    ├── CHANGELOG.md:14
+    ├── AGENTS.md:246
+    ├── CHANGELOG.md:66
     ├── CODE_OF_CONDUCT.md:13
-    ├── CONTRIBUTING.md:90
+    ├── CONTRIBUTING.md:98
     ├── LICENSE:21
-    ├── README.md:110
-    ├── RELEASE.md:28
+    ├── README.md:237
+    ├── RELEASE.md:30
     ├── SECURITY.md:15
     ├── docs
-    │   └── datajud-resolver.md:100
-    ├── gitree.txt:29
-    ├── pyproject.toml:86
+    │   └── datajud-resolver.md:117
+    ├── gitree.txt:39
+    ├── pyproject.toml:89
     ├── src
     │   └── pydatajud
-    │       ├── __init__.py:32
-    │       ├── cli.py:58
-    │       ├── client.py:157
+    │       ├── __init__.py:51
+    │       ├── cli.py:96
+    │       ├── client.py:458
+    │       ├── client_modules
+    │       │   ├── __init__.py:27
+    │       │   └── movements_delta.py:343
     │       ├── exceptions.py:26
     │       ├── py.typed:1
     │       └── resolver.py:144
     └── tests
-        ├── test_cli.py:56
-        ├── test_client.py:108
+        ├── e2e
+        │   ├── conftest.py:83
+        │   ├── fixtures
+        │   │   └── processes.json:6
+        │   ├── test_client_queries.py:59
+        │   ├── test_movements_delta.py:153
+        │   └── test_pagination.py:91
+        ├── test_cli.py:129
+        ├── test_client.py:472
         └── test_resolver.py:76
 
-6 directories, 20 files
+9 directories, 27 files
